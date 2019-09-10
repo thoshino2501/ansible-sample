@@ -1,0 +1,12 @@
+---
+### トップレベルPlaybook ###
+# 本ファイルは、個別のPlaybookの呼び出しを管理する。
+# 個別のPlaybookはサーバの役割ごとに定義する。
+# 1つの役割のサーバには、1つ以上複数のミドルウェアが動作する。
+# 
+# 記載例:
+# - include: <個別Playbookファイル名>
+
+- include: front.yml
+- include: ap.yml
+- include: db.yml
