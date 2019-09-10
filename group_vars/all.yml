@@ -1,0 +1,47 @@
+---
+### 全機器共通の変数 ###
+# 記載例:
+# [単一値の場合]
+# <変数名>: 値
+#
+# [辞書型]
+# <変数名>:
+#   <要素名1>: 値1
+#   <要素名2>: 値2
+#   <要素名3>: 値3
+#
+# [リスト型]
+# <変数名>:
+#   - 値1
+#   - 値2
+#   - 値3
+
+### ログイン情報 ###
+# SSHユーザ名
+ansible_ssh_user: operator
+# SSHパスワード
+ansible_ssh_pass: operatorpass
+# rootパスワード(特権モードにsuを使用する場合)
+ansible_su_pass: adminpass
+# sshポート番号
+ssh_port: 22
+
+### OS共通パラメータ ###
+centos:
+  # Systemdターゲット (multi-user.target|graphical.target)
+  systemd-target: multi-user.target
+  # SELinux有効/無効 (enable|disable)
+  selinux: disable
+  # Firewalld有効/無効 (enable|disable)
+  firewalld: enable
+  # IPv6有効/無効 (enable|disable)
+  ipv6: disable
+  # 時刻同期先NTPサーバ (1以上複数指定)
+  ntp_servers:
+    - 133.243.238.163
+    - 133.243.238.164
+  # 名前解決先DNSサーバ (1以上複数指定)
+  dns_servers:
+    - 8.8.8.8
+    - 8.8.8.9
+  
