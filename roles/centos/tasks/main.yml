@@ -1,0 +1,14 @@
+---
+### トップレベルTasksファイル ###
+# 本ファイルでは、呼び出すTasksファイルの管理を行う。
+# 作業単位でTasksファイルを分離し、必要な処理を呼び出す。
+#
+# 記載例:
+# - Include: <Tasksファイル名>
+
+- Include: configure_systemd_target.yml
+- Include: configure_selinux.yml
+- Include: configure_firewalld.yml
+- Include: configure_ipv6.yml
+- Include: configure_ntp.yml
+- Include: configure_dns.yml
