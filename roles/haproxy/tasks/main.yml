@@ -1,0 +1,10 @@
+---
+### トップレベルTasksファイル ###
+# 本ファイルでは、呼び出すTasksファイルの管理を行う。
+# 作業単位でTasksファイルを分離し、必要な処理を呼び出す。
+#
+# 記載例:
+# - Include: <Tasksファイル名>
+
+- Include: install_package.yml
+- Include: configure.yml
