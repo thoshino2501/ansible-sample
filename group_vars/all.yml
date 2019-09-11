@@ -32,10 +32,25 @@ centos:
   systemd-target: multi-user.target
   # SELinux有効/無効 (enable|disable)
   selinux: disable
-  # Firewalld有効/無効 (enable|disable)
-  firewalld: enable
   # IPv6有効/無効 (enable|disable)
   ipv6: disable
+  # Firewalld設定
+  firewalld:
+    # Firewalld有効/無効 (enable|disable)
+    state: enable
+    # 許可ポート一覧
+    permit_ports:
+      - 22/tcp
+  # SSH設定
+  sshd:
+    # リッスンするポート番号
+    port: 22
+    # 直接のrootログイン許可 (yes|no)
+    PermitRootLogin: no
+    # パスワード認証の許可 (yes|no)
+    PasswordAuthentication: yes
+    # 空パスワードの許可 (yes|no)
+    PermitEmptyPasswords: no
   # 時刻同期先NTPサーバ (1以上複数指定)
   ntp_servers:
     - 133.243.238.163
