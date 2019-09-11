@@ -15,5 +15,3 @@
     - centos
     # LBの設定
     - haproxy
-    # リバースプロキシの設定
-    - nginx
