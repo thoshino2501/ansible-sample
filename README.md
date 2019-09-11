@@ -12,6 +12,7 @@
 OSはCentOS 7を想定しています。
 
 ## 環境準備
+### パッケージインストール
 構築対象のサーバとは別に、CentOS 7がインストールされた管理サーバを用意し、必要パッケージをインストールします。
 
 ```
@@ -19,6 +20,7 @@ OSはCentOS 7を想定しています。
 # yum -y install ansible
 ```
 
+### 設定ファイル編集
 SSH認証鍵のチェックをスキップするため、Ansibleの設定ファイルを編集します。
 
 ```
@@ -30,31 +32,35 @@ ssh_args = -C -o ControlMaster=auto -o ControlPersist=60s -o StrictHostKeyChecki
 ```
 
 ## 実行方法
+### Playbook取得
 本リポジトリをクローンし、カレントディレクトリを変更します。
 
 ```
 $ git clone https://github.com/thoshino2501/ansible-sample.git
 $ cd ansible-sample
 ```
-
+### 作業対象サーバの設定
 hostsファイルを編集し、作業対象サーバの情報を指定します。
 
 ```
 $ vi hosts
 ```
 
+### パラメータの設定
 group_varsフォルダ内の各ファイルを編集し、各サーバのパラメータを指定します。
 
 ```
 $ vi group_vars/all.yml
 ```
 
+### 作業対象Playbookの設定
 site.ymlファイルを編集し、実行するPlaybookファイルを指定します。
 
 ```
 $ vi site.yml
 ```
 
+### Ansibleの実行
 Ansibleを起動し、Playbookを実行します。
 なお、-vオプションを付与すると、より詳細な処理内容が処理中に表示されます。
 
