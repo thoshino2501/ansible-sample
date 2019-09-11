@@ -11,10 +11,10 @@ ft-02 ansible_host=192.168.1.2
 ft-vip ansible_host=192.168.1.3
 
 [ap]
-ap01 ansible_host=192.168.2.1
-ap02 ansible_host=192.168.2.2
+ap-01 ansible_host=192.168.2.1
+ap-02 ansible_host=192.168.2.2
 
 [db]
-db01 ansible_host=192.168.2.3
-db02 ansible_host=192.168.2.4
+db-01 ansible_host=192.168.2.3
+db-02 ansible_host=192.168.2.4
 db-vip ansible_host=192.168.2.5
