@@ -51,10 +51,12 @@ centos:
     PasswordAuthentication: yes
     # 空パスワードの許可 (yes|no)
     PermitEmptyPasswords: no
-  # 時刻同期先NTPサーバ (1以上複数指定)
-  ntp_servers:
-    - 133.243.238.163
-    - 133.243.238.164
+  # Chronyd設定
+  chronyd:
+    # 時刻同期先NTPサーバ (1以上複数指定)
+    ntp_servers:
+      - 133.243.238.163
+      - 133.243.238.164
   # 名前解決先DNSサーバ (1以上複数指定)
   dns_servers:
     - 8.8.8.8
