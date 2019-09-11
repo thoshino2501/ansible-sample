@@ -44,7 +44,7 @@ centos:
   # SSH設定
   sshd:
     # リッスンするポート番号
-    port: 22
+    Port: 22
     # 直接のrootログイン許可 (yes|no)
     PermitRootLogin: no
     # パスワード認証の許可 (yes|no)
