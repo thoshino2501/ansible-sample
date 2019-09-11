@@ -40,19 +40,19 @@ $ cd ansible-sample
 hostsファイルを編集し、作業対象サーバの情報を指定します。
 
 ```
-# vi hosts
+$ vi hosts
 ```
 
 group_varsフォルダ内の各ファイルを編集し、各サーバのパラメータを指定します。
 
 ```
-# vi group_vars/all.yml
+$ vi group_vars/all.yml
 ```
 
 site.ymlファイルを編集し、実行するPlaybookファイルを指定します。
 
 ```
-# vi site.yml
+$ vi site.yml
 ```
 
 Ansibleを起動し、Playbookを実行します。
