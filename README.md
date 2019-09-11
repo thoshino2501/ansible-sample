@@ -5,8 +5,8 @@
 
 ## 前提条件
 現在想定しているサーバ種別は以下の通りです。
-- フロントエンドサーバ(HAProxy/Nginx)
-- APサーバ(PHP)
+- フロントエンドサーバ(HAProxy)
+- APサーバ(Apache/PHP)
 - DBサーバ(MariaDB)
 
 OSはCentOS 7を想定しています。
