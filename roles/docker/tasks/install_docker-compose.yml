@@ -1,0 +1,21 @@
+---
+- name: Check latest version.
+  shell: curl -s 'https://api.github.com/repos/docker/compose/releases/latest' |grep '"name":' | head -1 | sed -r 's/.*([0-9]+\.[0-9]+\.[0-9]+).*/\1/'
+  register: cmd_result
+
+- name: Download compose.
+  get_url:
+    url: https://github.com/docker/compose/releases/download/{{ cmd_result.stdout }}/docker-compose-Linux-x86_64
+    dest: /usr/local/bin/docker-compose
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: Create symbolic link.
+  file:
+    src: /usr/local/bin/docker-compose
+    dest: /usr/bin/docker-compose
+    owner: root
+    group: root
+    mode: 0755
+    state: link
