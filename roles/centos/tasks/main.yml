@@ -4,11 +4,11 @@
 # 作業単位でTasksファイルを分離し、必要な処理を呼び出す。
 #
 # 記載例:
-# - Include: <Tasksファイル名>
+# - import_tasks: <Tasksファイル名>
 
-- Include: configure_systemd_target.yml
-- Include: configure_selinux.yml
-- Include: configure_firewalld.yml
-- Include: configure_ipv6.yml
-- Include: configure_ntp.yml
-- Include: configure_dns.yml
+- import_tasks: configure_systemd_target.yml
+- import_tasks: configure_selinux.yml
+- import_tasks: configure_firewalld.yml
+- import_tasks: configure_ipv6.yml
+- import_tasks: configure_ntp.yml
+- import_tasks: configure_dns.yml

@@ -5,8 +5,9 @@
 # 1つの役割のサーバには、1つ以上複数のミドルウェアが動作する。
 # 
 # 記載例:
-# - include: <個別Playbookファイル名>
+# - import_playbook: <個別Playbookファイル名>
 
-- include: front.yml
-- include: ap.yml
-- include: db.yml
+- import_playbook: front.yml
+- import_playbook: ap.yml
+- import_playbook: db.yml
+- import_playbook: docker.yml

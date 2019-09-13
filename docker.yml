@@ -6,13 +6,13 @@
 - name: Playbook for container server.
   # Inventoryファイル記載のホストグループ名を記載(allも可能)
   hosts: docker
-    # 特権モードでの作業を許可
-    become: yes
-    # 特権モードへの移行はsuコマンドsudoコマンドで実施
-    become_method: su
-    #become_method: sudo
-    roles:
-      # CentOS用の共通設定
-      - centos
-      # LBの設定
-      - docker
+  # 特権モードでの作業を許可
+  become: yes
+  # 特権モードへの移行はsuコマンドsudoコマンドで実施
+  become_method: su
+  #become_method: sudo
+  roles:
+    # CentOS用の共通設定
+    - centos
+    # Dockerの設定
+    - docker
