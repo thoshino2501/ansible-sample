@@ -1,0 +1,41 @@
+- name: Uninstall old version.
+  yum:
+    name:
+      - docker
+      - docker-client
+      - docker-client-latest
+      - docker-common
+      - docker-latest
+      - docker-latest-logrotate
+      - docker-logrotate
+      - docker-engine
+    state: absent
+
+- name: Install related packages.
+  yum:
+    name:
+      - yum-utils
+      - device-mapper-persistent-data
+      - lvm2
+    state: present
+
+- name: Add repository.
+  yum_repository:
+    name: docker-ce-stable
+    baseurl: https://download.docker.com/linux/centos/docker-ce.repo
+    enabled: yes
+    state: present
+
+- name: Install docker.
+  yum:
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+    state: present
+
+- name: Enable service.
+  systemd:
+    name: docker
+    state: started
+    enabled: yes
