@@ -1,0 +1,18 @@
+---
+### コンテナ基盤サーバ用Playbook
+# 本ファイルは、コンテナ基盤サーバ用のPlaybookである。
+# 作業対象機機器とログイン情報について記載し、具体的な作業手順はRolesファイルに>委譲する。
+
+- name: Playbook for container server.
+  # Inventoryファイル記載のホストグループ名を記載(allも可能)
+  hosts: docker
+    # 特権モードでの作業を許可
+    become: yes
+    # 特権モードへの移行はsuコマンドsudoコマンドで実施
+    become_method: su
+    #become_method: sudo
+    roles:
+      # CentOS用の共通設定
+      - centos
+      # LBの設定
+      - docker
