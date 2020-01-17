@@ -4,11 +4,10 @@
 本リポジトリは、Ansibleで各種サーバを構築する場合のサンプルファイルを保管しています。
 
 ## 前提条件
-現在想定しているサーバ種別(roles)は以下の通りです。
-- フロントエンドサーバ(HAProxy)
-- APサーバ(Apache/PHP)
-- DBサーバ(MariaDB)
-- コンテナ基盤サーバ(Docker)
+現在想定しているサーバ種別(搭載ミドルウェア)は以下の通りです。
+- フロントエンドサーバ(HAProxy / Keepalived / Apache)
+- APサーバ(PHP-FPM / PHP)
+- DBサーバ(MariaDB / Pacemaker)
 
 OSはCentOS 7を想定しています。
 
