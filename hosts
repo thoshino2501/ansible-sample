@@ -1,20 +1,42 @@
-### 作業対象情報の設定 ###
+### ホストの定義
 # 記述例:
-# [グループ名]
 # <ホスト名> ansible_host=<IPアドレス>
 # 
+# 備考: 
 # グループ名にハイフン、ドットは不可
 
-[front]
-ft-01 ansible_host=192.168.1.1
-ft-02 ansible_host=192.168.1.2
-ft-vip ansible_host=192.168.1.3
+ft01 ansible_host=10.0.0.1
+ft02 ansible_host=10.0.0.2
+
+ap01 ansible_host=192.168.0.1
+ap02 ansible_host=192.168.0.2
+
+db01 ansible_host=192.168.0.3
+db02 ansible_host=192.168.0.4
+
+### グループの定義
+# 記述例:
+# [グループ名]
+# <ホスト名>
+
+[ft]
+ft01
+ft02
 
 [ap]
-ap-01 ansible_host=192.168.2.1
-ap-02 ansible_host=192.168.2.2
+ap01
+ap02
 
 [db]
-db-01 ansible_host=192.168.2.3
-db-02 ansible_host=192.168.2.4
-db-vip ansible_host=192.168.2.5
+db01
+db02
+
+### ネストグループの定義
+# 記述例:
+# [グループ名:children]
+# <グループ名>
+
+[production:children]
+ft
+ap
+db
