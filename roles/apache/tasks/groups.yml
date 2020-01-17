@@ -1,0 +1,10 @@
+---
+### Apache用OSグループ管理タスク
+### 本ファイルは、OSグループの設定を管理する。
+
+- name: "OSグループ ({{ apache_group.name }})"
+  gropu:
+    name: "{{ apache_group.name }}"
+    gid: "{{ apache_group.gid | default(omit) }}"
+    state: present
+  tags: "apache_groups"

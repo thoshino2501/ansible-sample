@@ -1,0 +1,46 @@
+---
+### Apache用デフォルト変数
+### 本ファイルはApache用のデフォルト変数を定義したものである。
+### ホスト変数やグループ変数で値の指定がない場合に、デフォルトで使用するパラメータを指定する。
+
+### バージョン情報
+apache_version: "*"
+
+### パッケージ一覧
+apache_packages:
+  - "httpd-{{ apache_version }}.el{{ ansible_distribution_major_version }}.centos.{{ ansible_architecture }}"
+
+### サービス一覧
+apache_services:
+  - name: "httpd"
+    state: "started"
+    enabled: "yes"
+
+### OSグループ
+apache_group:
+  name: "apache"
+  gid: "48"
+
+### OSユーザ
+apache_user:
+  name: "apache"
+  uid: "48"
+  group: "apache"
+  comment: "Apache"
+  shell: "/usr/share/httpd"
+  home: "/sbin/nologin"
+
+### 管理対象ディレクトリ
+apache_dirs:
+  conf: "/etc/httpd"
+  www: "/var/www"
+
+### 管理対象ファイル
+apache_files:
+  conf: "{{ apache_dirs.conf }}/conf/httpd.conf"
+
+### Apache固有設定
+apache_port: "80"
+apache_document_root: "/var/log/www"
+apache_error_log: "logs/error_log"
+apache_log_level: "warn"

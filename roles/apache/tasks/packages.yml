@@ -1,0 +1,10 @@
+---
+### Apache用パッケージ管理タスク
+### 本ファイルは、必要パッケージのインストール状態を管理する。
+
+- name: "パッケージ (( {{ item }} ))"
+  yum:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ apache_packages }}"
+  tags: "apache_packages"

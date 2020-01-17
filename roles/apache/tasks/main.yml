@@ -1,0 +1,33 @@
+---
+### Apache用メインタスク
+### 本ファイルは、別ファイルに定義されたタスクの呼び出しを行う。
+
+#- name: "事前作業タスクのインクルード"
+#  include_tasks: pre_tasks.yml
+
+- name: "パッケージ管理タスクのインクルード"
+  include_tasks: packages.yml
+
+- name: "OSグループ管理タスクのインクルード"
+  include_tasks: groups.yml
+
+- name: "OSユーザ管理タスクのインクルード"
+  include_tasks: users.yml
+
+- name: "ディレクトリ管理タスクのインクルード"
+  include_tasks: dirs.yml
+
+- name: "設定ファイル管理タスクのインクルード"
+  include_tasks: conf_files.yml
+
+#- name: "その他ファイル管理タスクのインクルード"
+#  include_tasks: general_files.yml
+
+#- name: "初期設定タスクのインクルード"
+#  include_tasks: init_settings.yml
+
+- name: "サービス起動管理タスクのインクルード"
+  include_tasks: services.yml
+
+#- name: "事後作業タスクのインクルード"
+#  include_tasks: post_tasks.yml

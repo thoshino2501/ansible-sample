@@ -1,0 +1,21 @@
+---
+### Apache用ディレクトリ管理タスク
+### 本ファイルは、ディレクトリの状態を管理する。
+
+- name: "設定ディレクトリ ( {{ apache_dirs.conf }} )"
+  file:
+    path: "{{ apache_dirs.conf }}"
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+  tags: "apache_dirs"
+
+- name: "WWWディレクトリ ( {{ apache_dirs.www }} )"
+  file:
+    path: "{{ apache_dirs.www }}"
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+  tags: "apache_dirs"

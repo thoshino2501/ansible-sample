@@ -1,0 +1,13 @@
+---
+### Apache用設定ファイル管理タスク
+### 本ファイルは、設定ファイルの状態を管理する。
+
+- name: "設定ファイル ( {{ apache_files.conf }} )"
+  template:
+    src: httpd.conf.j2
+    dst: "{{ apache_files.conf }}"
+    owner: root
+    group: root
+    mode: 0644
+  notify: "restart httpd"
+  tags: "apache_conf_files"

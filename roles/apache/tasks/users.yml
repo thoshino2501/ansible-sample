@@ -1,0 +1,14 @@
+---
+### Apache用OSユーザ管理タスク
+### 本ファイルは、OSユーザの設定を管理する。
+
+- name: "OSユーザ ( {{ apache_user.name }} )"
+  gropu:
+    name: "{{ apache_user.name }}"
+    uid: "{{ apache_user.uid | default(omit) }}"
+    group: "{{ apache_user.group | default(omit) }}"
+    comment: "{{ apache_user.comment | default(omit) }}"
+    shell: "{{ apache_user.shell | default(omit) }}"
+    home: "{{ apache_user.home | default(omit) }}"
+    state: present
+  tags: "apache_users"
