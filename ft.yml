@@ -1,17 +1,25 @@
 ---
 ### フロントエンドサーバ用Playbook
 # 本ファイルは、フロントエンドサーバ用のPlaybookである。
-# 作業対象機機器とログイン情報について記載し、具体的な作業手順はRolesファイルに委譲する。
+# 作業対象機機器とログイン情報について記載し、具体的な作業手順はRoleに委譲する。
 
 - name: Playbook for  server.
   # Inventoryファイル記載のホストグループ名を記載(allも可能)
   hosts: web
   # 特権モードでの作業を許可
   become: yes
-  # 特権モードへの移行はsuコマンドで実施
-  become_method: su
+  # 特権モードへの移行はsudoコマンドで実施
+  become_method: sudo
   roles:
     # CentOS用の共通設定
-    - centos
-    # LBの設定
-    - haproxy
+    - role: centos
+      tags: centos
+    # Webサーバの設定
+    - role: apache
+      tags: apache
+    # ロードバランサの設定
+    - role: haproxy
+      tags: haproxy
+    # ロードバランサ冗長化設定
+    - role: keepalived
+      tags: keepalived
