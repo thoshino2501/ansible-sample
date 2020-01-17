@@ -7,7 +7,6 @@
 # 記載例:
 # - import_playbook: <個別Playbookファイル名>
 
-- import_playbook: front.yml
+- import_playbook: ft.yml
 - import_playbook: ap.yml
 - import_playbook: db.yml
-- import_playbook: docker.yml
