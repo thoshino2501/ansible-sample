@@ -7,6 +7,22 @@
     state: "{{ common_selinux_state }}"
   register: common_selinux_state
 
-- name: "OS再起動"
-  reboot:
+- name: "設定変更時の処理"
+  block:
+  - name: "OS再起動"
+    shell: "shutdown -r now"
+
+  - name: "OS停止確認"
+    wait_for
+      host: "{{ ansible_host }}"
+      port: "22"
+      state: "stopped"
+    delegate_to: localhost
+
+  - name: "OS停止確認"
+      host: "{{ ansible_host }}"
+      port: "22"
+      state: "started"
+      delay: "30"
+    delegate_to: localhost
   when: common_selinux_state is changed
