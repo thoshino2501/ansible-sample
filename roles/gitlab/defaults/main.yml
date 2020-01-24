@@ -24,9 +24,9 @@ gitlab_services:
 ### Firewalld
 gitlab_firewalld_services:
   - name: "http"
-  - zone: "public"
-  - permanent: "yes"
-  - state: "enabled"
+    zone: "public"
+    permanent: "yes"
+    state: "enabled"
 
 ### GitLab固有設定
 gitlab_repo_url: "https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.rpm.sh"
