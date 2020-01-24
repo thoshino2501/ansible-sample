@@ -12,8 +12,8 @@
   become_method: sudo
   roles:
     # CentOS用の共通設定
-    - role: centos
-      tags: centos
+    - role: common
+      tags: common
     # GitLab用の設定
     - role: gitlab
       tags: gitlab

@@ -13,6 +13,6 @@
   #become_method: sudo
   roles:
     # CentOS用の共通設定
-    - centos
+    - common
     # Dockerの設定
     - docker

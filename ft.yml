@@ -12,8 +12,8 @@
   become_method: sudo
   roles:
     # CentOS用の共通設定
-    - role: centos
-      tags: centos
+    - role: common
+      tags: common
     # Webサーバの設定
     - role: apache
       tags: apache
