@@ -1,0 +1,19 @@
+---
+### リポジトリサーバ用Playbook
+# 本ファイルは、リポジトリサーバ用のPlaybookである。
+# 作業対象機機器とログイン情報について記載し、具体的な作業手順はRoleに委譲する。
+
+- name: Playbook for  server.
+  # Inventoryファイル記載のホストグループ名を記載(allも可能)
+  hosts: repo
+  # 特権モードでの作業を許可
+  become: yes
+  # 特権モードへの移行はsudoコマンドで実施
+  become_method: sudo
+  roles:
+    # CentOS用の共通設定
+    - role: centos
+      tags: centos
+    # GitLab用の設定
+    - role: gitlab
+      tags: gitlab
