@@ -1,0 +1,12 @@
+---
+### 共通設定用DNS設定管理タスク
+### 本ファイルは、DNS設定を管理する。
+
+- name: "DNS設定ファイルの配置"
+  template:
+    src: "etc_resolv.conf.j2"
+    dest: "/etc/resolv.conf"
+    owner: "root"
+    group: "root"
+    mode: "0644"
+

@@ -14,7 +14,7 @@
 # SELinux about this change.
 # semanage port -a -t ssh_port_t -p tcp #PORTNUMBER
 #
-Port {{ centos.sshd.Port }}
+Port {{ common_sshd_port }}
 #AddressFamily any
 #ListenAddress 0.0.0.0
 #ListenAddress ::
@@ -36,7 +36,7 @@ SyslogFacility AUTHPRIV
 
 #LoginGraceTime 2m
 #PermitRootLogin yes
-PermitRootLogin {{ centos.sshd.PermitRootLogin }}
+PermitRootLogin {{ common_ssh_permit_root_login }}
 #StrictModes yes
 #MaxAuthTries 6
 #MaxSessions 10
@@ -63,8 +63,8 @@ AuthorizedKeysFile      .ssh/authorized_keys
 # To disable tunneled clear text passwords, change to no here!
 #PasswordAuthentication yes
 #PermitEmptyPasswords no
-PasswordAuthentication {{ centos.sshd.PasswordAuthentication }}
-PermitEmptyPasswords {{ centos.sshd.PermitEmptyPasswords }}
+PasswordAuthentication {{ common_sshd_password_authentication }}
+PermitEmptyPasswords {{ common_sshd_permit_empty_passwords }}
 
 # Change to no to disable s/key passwords
 #ChallengeResponseAuthentication yes

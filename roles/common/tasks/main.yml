@@ -4,11 +4,22 @@
 # 作業単位でTasksファイルを分離し、必要な処理を呼び出す。
 #
 # 記載例:
-# - import_tasks: <Tasksファイル名>
+# - include_tasks: <Tasksファイル名>
 
-- import_tasks: configure_systemd_target.yml
-- import_tasks: configure_selinux.yml
-- import_tasks: configure_firewalld.yml
-- import_tasks: configure_ipv6.yml
-- import_tasks: configure_ntp.yml
-- import_tasks: configure_dns.yml
+- name: "デフォルトターゲット管理タスクの呼び出し"
+  include_tasks: systemd_target.yml
+
+- name: "SELinux状態管理タスクの呼び出し"
+  include_tasks: selinux.yml
+
+- name: "カーネルパラメータ管理タスクの呼び出し"
+  include_tasks: kernel_parameter.yml
+
+- name: "NTP設定管理タスクの呼び出し"
+  include_tasks: ntp.yml
+
+- name: "DNS設定管理タスクの呼び出し"
+  include_tasks: dns.yml
+
+- name: "SSH設定管理タスクの呼び出し"
+  include_tasks: ssh.yml

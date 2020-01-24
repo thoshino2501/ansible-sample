@@ -1,0 +1,16 @@
+---
+### 共通設定用systemdデフォルトターゲット管理タスク
+### 本ファイルは、systemdのデフォルトターゲットを管理する。
+
+- name: "デフォルトターゲットの指定"
+  file:
+    src: "/lib/systemd/system/{{ common_default_target }}"
+    dest: "/etc/systemd/system/default.target"
+    owner: "root"
+    group: "root"
+    state: "link"
+  register: common_default_target
+
+- name: "ターゲットの変更"
+  shell: "systemctl isolate {{ common_default_target }}"
+  when: common_default_target is changed

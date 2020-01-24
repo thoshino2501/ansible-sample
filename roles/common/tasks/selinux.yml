@@ -1,0 +1,12 @@
+---
+### 共通設定用SELinux状態管理タスク
+### 本ファイルは、SELinux状態を管理する。
+
+- name: "SELinux状態"
+  selinux:
+    state: "{{ common_selinux_state }}"
+  register: common_selinux_state
+
+- name: "OS再起動"
+  reboot:
+  when: common_selinux_state is changed

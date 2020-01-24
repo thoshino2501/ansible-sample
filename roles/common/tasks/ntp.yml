@@ -1,0 +1,13 @@
+---
+### 共通設定用NTP設定管理タスク
+### 本ファイルは、NTP設定を管理する。
+
+- name: "NTP設定ファイルの配置"
+  template:
+    src: "etc_chrony.conf.j2"
+    dest: "/etc/chrony.conf"
+    owner: "root"
+    group: "root"
+    mode: "0644"
+  notify: "restart chronyd"
+
