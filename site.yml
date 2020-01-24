@@ -10,3 +10,4 @@
 - import_playbook: ft.yml
 - import_playbook: ap.yml
 - import_playbook: db.yml
+- import_playbook: repo.yml
