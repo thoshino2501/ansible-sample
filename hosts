@@ -14,6 +14,8 @@ ap02 ansible_host=192.168.0.2
 db01 ansible_host=192.168.0.3
 db02 ansible_host=192.168.0.4
 
+repo01 ansible_host=192.168.1.1
+
 ### グループの定義
 # 記述例:
 # [グループ名]
@@ -30,6 +32,9 @@ ap02
 [db]
 db01
 db02
+
+[repo]
+repo01
 
 ### ネストグループの定義
 # 記述例:
