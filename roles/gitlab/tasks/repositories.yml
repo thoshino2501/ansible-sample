@@ -1,0 +1,15 @@
+---
+### GitLb用Yumリポジトリ管理タスク
+### 本ファイルは、Yumリポジトリの状態を管理する。
+
+- name: "Yumリポジトリ登録スクリプトのダウンロード"
+  get_url: 
+    url: "{{ gitlab_repo_url }}"
+    sha256sum: "{{ csum }}"
+    dest: "/tmp/script.rpm.sh"
+    force: "True"
+  register: gitlab_reposcript_download_result
+
+- name: "Yumリポジトリ登録スクリプトの実行"
+  script: "/tmp/script.rpm.sh"
+  register: gitlab_reposcript_execute_result

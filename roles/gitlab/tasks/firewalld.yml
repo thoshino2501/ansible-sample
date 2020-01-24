@@ -1,0 +1,12 @@
+---
+### GitLab用Firewalldルール管理タスク
+### 本ファイルは、設定ファイルの状態を管理する。
+
+  - name: "サービスの追加 ({{ item.name }})"
+    become: yes
+    firewalld:
+      zone: "{{ item.zone }}"
+      service: "{{ item.name }}"
+      permanent: "{{ item.permanent }}"
+      state: "{{ item.state }}"
+    with_items: "{{ gitlab_firewalld_services }}"

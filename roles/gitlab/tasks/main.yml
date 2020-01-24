@@ -1,0 +1,15 @@
+---
+### GitLab用メインタスク
+### 本ファイルは、別ファイルに定義されたタスクの呼び出しを行う。
+
+- name: "Yumリポジトリ管理タスクのインクルード"
+  include_tasks: repositories.yml
+
+- name: "パッケージ管理タスクのインクルード"
+  include_tasks: packages.yml
+
+- name: "サービス起動管理タスクのインクルード"
+  include_tasks: services.yml
+
+- name: "Firewalldルール管理タスクのインクルード"
+  include_tasks: firewalld.yml

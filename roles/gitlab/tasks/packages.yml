@@ -1,0 +1,17 @@
+---
+### GitLab用パッケージ管理タスク
+### 本ファイルは、必要パッケージのインストール状態を管理する。
+
+- name: "依存パッケージのインストール (( {{ item }} ))"
+  yum:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ gitlab_packages }}"
+
+- name: "GitLabインストール用環境変数の定義"
+  shell: "EXTERNAL_URL={{ gitlab_external_url }}"
+
+- name: "GitLabのインストール"
+  yum:
+    name: "gitlab-ce"
+    state: latest

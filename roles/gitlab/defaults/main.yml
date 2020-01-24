@@ -1,0 +1,33 @@
+---
+### GitLab用デフォルト変数
+### 本ファイルはGitLab用のデフォルト変数を定義したものである。
+### ホスト変数やグループ変数で値の指定がない場合に、デフォルトで使用するパラメータを指定する。
+
+### パッケージ一覧
+gitlab_packages:
+  - "curl"
+  - "golang"
+  - "policycoreutils"
+  - "openssh-server"
+  - "openssh-clients"
+  - "postfix"
+  - "vim"
+  - "wget"
+  - "@Development tools"
+
+### サービス一覧
+gitlab_services:
+  - name: "postfix"
+    state: "started"
+    enabled: "yes"
+
+### Firewalld
+gitlab_firewalld_services:
+  - name: "http"
+  - zone: "public"
+  - permanent: "yes"
+  - state: "enabled"
+
+### GitLab固有設定
+gitlab_repo_url: "https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.rpm.sh"
+gitlab_external_url: "http://{{ ansible_host }}"
