@@ -13,7 +13,7 @@
     shell: "shutdown -r now"
 
   - name: "OS停止確認"
-    wait_for
+    wait_for:
       host: "{{ ansible_host }}"
       port: "22"
       state: "stopped"
