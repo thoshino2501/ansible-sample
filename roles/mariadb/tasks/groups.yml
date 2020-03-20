@@ -1,0 +1,9 @@
+---
+### MariaDB用OSグループ管理タスク
+### 本ファイルは、OSグループの設定を管理する。
+
+- name: "OSグループ ({{ mariadb_group.name }})"
+  gropu:
+    name: "{{ mariadb_group.name }}"
+    gid: "{{ mariadb_group.gid | default(omit) }}"
+    state: present

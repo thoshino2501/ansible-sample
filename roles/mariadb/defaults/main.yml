@@ -1,0 +1,64 @@
+---
+### MariaDB用デフォルト変数
+### 本ファイルはMariaDB用のデフォルト変数を定義したものである。
+### ホスト変数やグループ変数で値の指定がない場合に、デフォルトで使用するパラメータを指定する。
+
+### バージョン情報
+mariadb_version: "*"
+
+### パッケージ一覧
+mariadb_packages:
+  - "mariadb-{{ mariadb_version }}.el{{ ansible_distribution_major_version }}.{{ ansible_architecture }}"
+  - "mariadb-server-{{ mariadb_version }}.el{{ ansible_distribution_major_version }}.{{ ansible_architecture }}"
+### サービス一覧
+mariadb_service:
+  name: "mariadb"
+  state: "started"
+  enabled: "yes"
+
+### OSグループ
+mariadb_group:
+  name: "mysql"
+  gid: "27"
+
+### OSユーザ
+mariadb_user:
+  name: "mysql"
+  uid: "27"
+  group: "mariadb"
+  comment: "MariaDB Server"
+  home: "{{ mariadb_data_dir }}"
+  shell: "/sbin/nologin"
+
+
+### 管理対象ディレクトリ
+mariadb_data_dir:
+  path: "/var/lib/mysql"
+  owner: "{{ mariadb_user.name }}"
+  group: "{{ mariadb_group.name }}"
+  mode: "755"
+mariadb_log_dir:
+  path: "/var/log/mariadb"
+  owner: "{{ mariadb_user.name }}"
+  group: "{{ mariadb_group.name }}"
+  mode: "750"
+mariadb_pid_dir:
+  path: "/var/run/mariadb"
+  owner: "{{ mariadb_user.name }}"
+  group: "{{ mariadb_group.name }}"
+  mode: "755"
+mariadb_conf_dir:
+  path: "/etc/my.cnf.d"
+  owner: "root"
+  group: "root"
+  mode: "755"
+
+### 管理対象ファイル
+mariadb_my_cnf: "my.cnf"
+
+### MariaDB固有設定
+# [mysqld]
+mariadb_socket: "{{ mariadb_data_dir.path }}/mysql.sock"
+# [mysqld_safe]
+mariadb_log_error: "{{ mariadb_log_dir.path }}/mariadb.log"
+mariadb_pid_file: "{{ mariadb_pid_dir.path }}/mariadb.pid"

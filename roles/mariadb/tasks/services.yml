@@ -1,0 +1,11 @@
+---
+### MariaDB用サービス起動管理タスク
+### 本ファイルは、サービス起動状態を管理する。
+
+- name: "サービス起動状態 ({{ mariadb_service.name }})"
+  systemd:
+    name: "{{ mariadb_service.name }}.service"
+    state: "{{ mariadb_service.state }}"
+    enabled: "{{ mariadb_service.enabled }}"
+  when: (ansible_distribution_major_version == "7") or
+        (ansible_distribution_major_version == "8")

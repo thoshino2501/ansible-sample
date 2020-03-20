@@ -1,0 +1,8 @@
+---
+### MariaDB用パッケージ管理タスク
+### 本ファイルは、必要パッケージのインストール状態を管理する。
+
+- name: "パッケージ ({{ mariadb_packages }})"
+  yum:
+    name: "{{ mariadb_packages }}"
+    state: latest

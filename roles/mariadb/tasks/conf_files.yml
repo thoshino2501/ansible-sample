@@ -1,0 +1,12 @@
+---
+### MariaDB用設定ファイル管理タスク
+### 本ファイルは、設定ファイルの状態を管理する。
+
+- name: "設定ファイル ({{ mariadb_my_cnf }})"
+  template:
+    src: my.cnf.j2
+    dst: "{{ mariadb_my_cnf }}"
+    owner: root
+    group: root
+    mode: 644
+  notify: "restart mariadb"

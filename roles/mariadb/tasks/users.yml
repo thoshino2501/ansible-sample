@@ -1,0 +1,13 @@
+---
+### MariaDB用OSユーザ管理タスク
+### 本ファイルは、OSユーザの設定を管理する。
+
+- name: "OSユーザ ( {{ mariadb_user.name }} )"
+  gropu:
+    name: "{{ mariadb_user.name }}"
+    uid: "{{ mariadb_user.uid | default(omit) }}"
+    group: "{{ mariadb_user.group | default(omit) }}"
+    comment: "{{ mariadb_user.comment | default(omit) }}"
+    shell: "{{ mariadb_user.shell | default(omit) }}"
+    home: "{{ mariadb_user.home | default(omit) }}"
+    state: present

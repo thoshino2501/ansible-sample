@@ -1,0 +1,35 @@
+---
+### MariaDB用ディレクトリ管理タスク
+### 本ファイルは、ディレクトリの状態を管理する。
+
+- name: "設定ディレクトリ ({{ mariadb_data_dir.path }})"
+  file:
+    path: "{{ mariadb_data_dir.path }}"
+    state: directory
+    owner: "{{ mariadb_data_dir.owner }}"
+    group: "{{ mariadb_data_dir.group }}"
+    mode: "{{ mariadb_data_dir.mode }}"
+
+- name: "設定ディレクトリ ({{ mariadb_log_dir.path }})"
+  file:
+    path: "{{ mariadb_log_dir.path }}"
+    state: directory
+    owner: "{{ mariadb_log_dir.owner }}"
+    group: "{{ mariadb_log_dir.group }}"
+    mode: "{{ mariadb_log_dir.mode }}"
+
+- name: "設定ディレクトリ ({{ mariadb_pid_dir.path }})"
+  file:
+    path: "{{ mariadb_pid_dir.path }}"
+    state: directory
+    owner: "{{ mariadb_pid_dir.owner }}"
+    group: "{{ mariadb_pid_dir.group }}"
+    mode: "{{ mariadb_pid_dir.mode }}"
+
+- name: "設定ディレクトリ ({{ mariadb_conf_dir.path }})"
+  file:
+    path: "{{ mariadb_conf_dir.path }}"
+    state: directory
+    owner: "{{ mariadb_conf_dir.owner }}"
+    group: "{{ mariadb_conf_dir.group }}"
+    mode: "{{ mariadb_conf_dir.mode }}"
