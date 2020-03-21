@@ -14,6 +14,6 @@
     # CentOS用の共通設定
     - role: common
       tags: common
-    # DBサーバの設定
+    # MariaDBの設定
     - role: mariadb
       tags: mariadb
