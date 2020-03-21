@@ -4,7 +4,7 @@
 
 - name: cyronyd設定ファイルの配置
   template:
-    src: etc_chrony.conf.j2
+    src: etc/chrony.conf.j2
     dest: /etc/chrony.conf
     owner: root
     group: root
