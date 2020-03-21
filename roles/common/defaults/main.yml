@@ -4,74 +4,74 @@
 ### ホスト変数やグループ変数で値の指定がない場合に、デフォルトで使用するパラメータを指定する。
 
 ### デフォルトターゲット
-common_default_target: "multi-user.target"
+common_default_target: multi-user.target
 
 ### SELinux状態
-common_selinux_state: "disabled"
+common_selinux_state: disabled
 
 ### カーネルパラメータ
 common_kernel_params:
-  - name: "net.ipv6.conf.all.disable_ipv6"
-    value: "1"
-  - name: "net.ipv6.conf.default.disable_ipv6"
-    value: "1"
+  - name: net.ipv6.conf.all.disable_ipv6
+    value: 1
+  - name: net.ipv6.conf.default.disable_ipv6
+    value: 1
 
 ### パッケージ一覧
 common_packages:
-  - "firewalld"
-  - "chrony"
-  - "openssh-server"
-  - "openssh-clients"
+  - firewalld
+  - chrony
+  - openssh-server
+  - openssh-clients
 
 ### サービス一覧
 common_services:
-  - name: "chronyd"
-    state: "started"
-    enabled: "yes"
-  - name: "crond"
-    state: "started"
-    enabled: "yes"
-  - name: "firewalld"
-    state: "started"
-    enabled: "yes"
-  - name: "irqbalance"
-    state: "started"
-    enabled: "yes"
-  - name: "NetworkManager"
-    state: "started"
-    enabled: "yes"
-  - name: "postfix"
-    state: "started"
-    enabled: "yes"
-  - name: "rsyslog"
-    state: "started"
-    enabled: "yes"
-  - name: "sshd"
-    state: "started"
-    enabled: "yes"
-  - name: "tuned"
-    state: "started"
-    enabled: "yes"
+  - name: chronyd
+    state: started
+    enabled: yes
+  - name: crond
+    state: started
+    enabled: yes
+  - name: firewalld
+    state: started
+    enabled: yes
+  - name: irqbalance
+    state: started
+    enabled: yes
+  - name: NetworkManager
+    state: started
+    enabled: yes
+  - name: postfix
+    state: started
+    enabled: yes
+  - name: rsyslog
+    state: started
+    enabled: yes
+  - name: sshd
+    state: started
+    enabled: yes
+  - name: tuned
+    state: started
+    enabled: yes
 
 ### Firewalld
 common_firewalld_services:
-  - name: "ssh"
-    zone: "public"
-    permanent: "yes"
-    state: "enabled"
+  - name: ssh
+    zone: public
+    permanent: yes
+    state: enabled
 
 ### 時刻同期先NTPサーバ
 common_ntp_servers:
-  - "ntp.nict.jp"
+  - ntp.nict.jp
 
 ### 名前解決先DNSサーバ
 common_dns_servers:
-  - "8.8.8.8"
-  - "8.8.4.4"
+  - 8.8.8.8
+  - 8.8.4.4
 
 ### SSH設定
-common_sshd_port: "22"
-common_ssh_permit_root_login: "yes"
-common_sshd_password_authentication: "yes"
-common_sshd_permit_empty_passwords: "no"
-
+common_sshd_port: 22
+common_ssh_permit_root_login: yes
+common_sshd_password_authentication: yes
+common_sshd_permit_empty_passwords: no
+common_sshd_use_dns: no

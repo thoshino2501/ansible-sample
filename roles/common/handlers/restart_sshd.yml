@@ -1,0 +1,9 @@
+---
+### 共通設定用chronyd再起動ハンドラ
+### 本ファイルは、chronydサービスの再起動を行う。
+
+- name: restart chronyd
+  systemd:
+    name: chronyd
+    state: restarted
+    daemon_reload: yes

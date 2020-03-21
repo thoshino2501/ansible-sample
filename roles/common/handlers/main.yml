@@ -9,3 +9,7 @@
 - name: chronyd再起動ハンドラの呼び出し
   import_tasks: restart_chronyd.yml
   listen: restart chronyd
+
+- name: sshd再起動ハンドラの呼び出し
+  import_tasks: restart_sshd.yml
+  listen: restart sshd
