@@ -2,38 +2,48 @@
 ### MariaDB用メインタスク
 ### 本ファイルは、別ファイルに定義されたタスクの呼び出しを行う。
 
-#- name: "事前作業タスクのインクルード"
-#  include_tasks: pre_tasks.yml
-#  tags: "mariadb_pre_tasks"
+#- name: 事前作業タスクの呼び出し
+#  import_tasks: pre_tasks.yml
+#  tags: mariadb_pre_tasks
 
-- name: "パッケージ管理タスクのインクルード"
-  include_tasks: packages.yml
-  tags: "mariadb_packages"
+- name: パッケージ管理タスクの呼び出し
+  import_tasks: packages.yml
+  tags: mariadb_packages
 
-- name: "OSグループ管理タスクのインクルード"
-  include_tasks: groups.yml
-  tags: "mariadb_groups"
+- name: OSグループ管理タスクの呼び出し
+  import_tasks: groups.yml
+  tags: mariadb_groups
 
-- name: "OSユーザ管理タスクのインクルード"
-  include_tasks: users.yml
-  tags: "mariadb_users"
+- name: OSユーザ管理タスクの呼び出し
+  import_tasks: users.yml
+  tags: mariadb_users
 
-- name: "ディレクトリ管理タスクのインクルード"
-  include_tasks: dirs.yml
-  tags: "mariadb_dirs"
+- name: ディレクトリ管理タスクの呼び出し
+  import_tasks: dirs.yml
+  tags: mariadb_dirs
 
-- name: "設定ファイル管理タスクのインクルード"
-  include_tasks: conf_files.yml
-  tags: "mariadb_conf_files"
-#- name: "その他ファイル管理タスクのインクルード"
-#  include_tasks: general_files.yml
+- name: 設定ファイル管理タスクの呼び出し
+  import_tasks: conf_files.yml
+  tags: mariadb_conf_files
 
-#- name: "初期設定タスクのインクルード"
-#  include_tasks: init_settings.yml
+#- name: その他ファイル管理タスクの呼び出し
+#  import_tasks: general_files.yml
 
-- name: "サービス起動管理タスクのインクルード"
-  include_tasks: services.yml
-  tags: "mariadb_services"
+- name: サービス起動管理タスクの呼び出し
+  import_tasks: services.yml
+  tags: mariadb_services
 
-#- name: "事後作業タスクのインクルード"
-#  include_tasks: post_tasks.yml
+- name: 初期設定実施確認
+  shell: mysql -u root -e 'show databases;'
+  ignore_errors: True
+  changed_when: False
+  register: mariadb_is_initialized
+  tags: mariadb_init_settings
+
+#- name: 初期設定タスクの呼び出し
+#  import_tasks: init_settings.yml
+#  when: mariadb_is_initialized.rc == 0
+#  tags: mariadb_init_settings
+
+#- name: 事後作業タスクの呼び出し
+#  import_tasks: post_tasks.yml
