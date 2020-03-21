@@ -2,5 +2,9 @@
 ### 共通設定用メインハンドラ
 ### 本ファイルは、別ファイルに定義されたハンドラの呼び出しを行う。
 
+- name: OS再起動ハンドラの呼び出し
+  include_tasks: restart_system.yml
+  listen: restart system
+
 - name: "chronyd再起動ハンドラの呼び出し"
   include_tasks: "restart_chronyd.yml"

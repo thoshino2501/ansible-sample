@@ -1,0 +1,20 @@
+---
+### 共通設定用OS再起動ハンドラ
+### 本ファイルは、OSの再起動を行う。
+
+- name: "OS再起動"
+  shell: "shutdown -r now"
+  
+- name: "OS停止確認"
+  wait_for:
+    host: "{{ ansible_host }}"
+    port: "22"
+    state: "stopped"
+  delegate_to: localhost
+
+- name: "OS起動確認"
+    host: "{{ ansible_host }}"
+    port: "22"
+    state: "started"
+    delay: "30"
+  delegate_to: localhost
