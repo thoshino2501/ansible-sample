@@ -1,0 +1,11 @@
+---
+### NGINX用サービス起動管理タスク
+### 本ファイルは、サービス起動状態を管理する。
+
+- name: "サービス起動状態 ( {{ item.name }} )"
+  systemd:
+    name: "{{ item.name }}.service"
+    state: "{{ item.state }}"
+    enabled: "{{ item.enabled }}"
+  with_items: "{{ services }}"
+  tags: "nginx_services"

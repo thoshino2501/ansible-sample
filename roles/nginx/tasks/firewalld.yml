@@ -1,0 +1,13 @@
+---
+### 共通設定用Firewalldルール管理タスク
+### 本ファイルは、設定ファイルの状態を管理する。
+
+  - name: "サービスの追加 ({{ item }})"
+    firewalld:
+      zone: "public"
+      service: "{{ item }}"
+      permanent: "yes"
+      state: "enabled"
+    with_items:
+      - "http"
+      - "https"

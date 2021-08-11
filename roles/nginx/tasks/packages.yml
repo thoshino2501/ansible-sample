@@ -1,0 +1,9 @@
+---
+### NGINX用パッケージ管理タスク
+### 本ファイルは、必要パッケージのインストール状態を管理する。
+
+- name: "パッケージ管理"
+  yum:
+    name: "{{ packages }}"
+    state: latest
+  tags: "nginx_packages"

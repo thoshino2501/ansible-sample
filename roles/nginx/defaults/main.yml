@@ -1,0 +1,17 @@
+---
+### NGINX用デフォルト変数
+### 本ファイルはNGINX用のデフォルト変数を定義したものである。
+### ホスト変数やグループ変数で値の指定がない場合に、デフォルトで使用するパラメータを指定する。
+
+### バージョン情報
+version: "1.18"
+
+### パッケージ一覧
+packages:
+  - "@nginx:{{ version }}/common"
+
+### サービス一覧
+services:
+  - name: "nginx"
+    state: "started"
+    enabled: "yes"

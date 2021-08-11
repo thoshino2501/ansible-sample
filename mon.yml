@@ -1,0 +1,18 @@
+---
+### 監視サーバ用Playbook
+# 本ファイルは、監視サーバ用のPlaybookである。
+# 作業対象機機器とログイン情報について記載し、具体的な作業手順はRoleに委譲する。
+
+- name: Playbook for monitoring server.
+  # Inventoryファイル記載のホストグループ名を記載(allも可能)
+  hosts: mon
+  # 特権モードでの作業を許可
+  become: yes
+  # 特権モードへの移行はsudoコマンドで実施
+  become_method: sudo
+  roles:
+    - {role: common, tags: common}
+    - { role: nginx, tags: nginx }
+    - { role: php_fpm, tags: php_fpm }
+    - { role: postgresql, tags: postgresql }
+    - { role: zabbix_server, tags: zabbix_agent }
